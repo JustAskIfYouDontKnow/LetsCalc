@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsCalc.API", "LetsCalc.API\LetsCalc.API.csproj", "{5557A699-0274-4F7A-816C-3FA946A415C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsCalc.Database", "LetsCalc.Database\LetsCalc.Database.csproj", "{0737A4A9-0D5E-42F7-B7E6-3962854F4553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsCalc.API.Client", "LetsCalc.API.Client\LetsCalc.API.Client.csproj", "{FB845E2F-9054-47D3-BD85-AF640BDEA2C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{5557A699-0274-4F7A-816C-3FA946A415C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5557A699-0274-4F7A-816C-3FA946A415C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5557A699-0274-4F7A-816C-3FA946A415C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0737A4A9-0D5E-42F7-B7E6-3962854F4553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0737A4A9-0D5E-42F7-B7E6-3962854F4553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0737A4A9-0D5E-42F7-B7E6-3962854F4553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0737A4A9-0D5E-42F7-B7E6-3962854F4553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB845E2F-9054-47D3-BD85-AF640BDEA2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB845E2F-9054-47D3-BD85-AF640BDEA2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB845E2F-9054-47D3-BD85-AF640BDEA2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB845E2F-9054-47D3-BD85-AF640BDEA2C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

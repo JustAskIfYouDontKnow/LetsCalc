@@ -9,6 +9,12 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LetsCalc.API.Client\LetsCalc.API.Client.csproj" />
+      <ProjectReference Include="..\LetsCalc.Database\LetsCalc.Database.csproj" />
     </ItemGroup>
 
 </Project>
