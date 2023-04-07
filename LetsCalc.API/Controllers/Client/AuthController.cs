@@ -13,9 +13,12 @@ public class AuthController : AbstractController
     private readonly IUserRepository _userRepository;
     private readonly JwtSettings _jwtSettings;
 
-    public AuthController(IUserRepository userRepository, IOptions<JwtSettings> optionsAccessor)
+    private readonly ILogger<AbstractController> _logger;
+    
+    public AuthController(IUserRepository userRepository, IOptions<JwtSettings> optionsAccessor, ILogger<AbstractController> logger)
     {
         _userRepository = userRepository;
+        _logger = logger;
         _jwtSettings = optionsAccessor.Value;
     }
 
@@ -33,12 +36,9 @@ public class AuthController : AbstractController
         }
         
         var token = AuthService.GetToken(userModel, _jwtSettings);
-
+        _logger.LogDebug("Token was generated for user id {id}: {token}", userModel.Id, token);
         return Ok(new Auth.Response(token));
     }
-
-
-    
 }
 
 

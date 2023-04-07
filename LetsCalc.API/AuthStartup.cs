@@ -8,16 +8,16 @@ public static class AuthStartup
 {
     public static void ConfigureJwtAuth(IServiceCollection services, IConfiguration configuration)
     {
-        var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.GetSection("Token:SecretKey").Value));
-        var audience = configuration.GetSection("Token:Issuer").Value;
-        var issuer = configuration.GetSection("Token:Audience").Value;
-
+        var key = configuration.GetSection("Token:SecretKey").Value;
+        var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
+        var audience = configuration.GetSection("Token:Audience").Value;
+        var issuer = configuration.GetSection("Token:Issuer").Value;
+        
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(
                 options =>
                 {
                     options.RequireHttpsMetadata = false;
-
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,

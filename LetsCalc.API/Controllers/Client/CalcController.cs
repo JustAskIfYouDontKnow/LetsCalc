@@ -1,3 +1,4 @@
+using LetsCalc.API.Client.Nums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,15 +15,15 @@ public class CalcController : AbstractController
     
     [Authorize]
     [HttpPut]
-    public async Task<IActionResult> Addition(int a, int b)
+    public async Task<IActionResult> Addition([FromBody] Nums request)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
-
         }
-        var sum = (a + b);
-        _logger.LogInformation("Sum {a}+{b} is {s}", a, b, sum);
+        
+        var sum = (request.A + request.B);
+        _logger.LogDebug("Sum {a}+{b} is {s}", request.A, request.B, sum);
         return Ok(sum);
     }
 }
