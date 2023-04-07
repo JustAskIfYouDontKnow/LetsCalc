@@ -29,7 +29,8 @@ namespace LetsCalc.API
             
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserData, UserData>();
-
+            
+            services.AddRazorPages();
             services.AddControllers();
         }
 
@@ -50,8 +51,9 @@ namespace LetsCalc.API
             
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=LetsCalc}/{action=Index}")
                     .RequireAuthorization();
+                endpoints.MapRazorPages();
             });
         }
     }
