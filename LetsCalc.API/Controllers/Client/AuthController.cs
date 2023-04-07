@@ -1,7 +1,9 @@
-
+using System.Security.Claims;
 using LetsCalc.API.Client.Auth;
 using LetsCalc.API.Helper;
 using LetsCalc.Database;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -36,7 +38,17 @@ public class AuthController : AbstractController
         }
         
         var token = AuthService.GetToken(userModel, _jwtSettings);
+
+
+        var claims = ClaimsService.GetClaims(userModel);
+        
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(identity);
+        
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        
         _logger.LogDebug("Token was generated for user id {id}: {token}", userModel.Id, token);
+        
         return Ok(new Auth.Response(token));
     }
 }

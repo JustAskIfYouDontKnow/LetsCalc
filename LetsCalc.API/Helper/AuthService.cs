@@ -1,5 +1,4 @@
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using LetsCalc.Database.Models;
 using Microsoft.IdentityModel.Tokens;
@@ -10,12 +9,7 @@ public static class AuthService
 {
     public static string GetToken(UserModel userModel, JwtSettings jwtSettings)
     {
-        var claims = new[]
-        {
-            new Claim("id", userModel.Id.ToString()),
-            new Claim("role", userModel.Role.ToString())
-        };
-
+        var claims = ClaimsService.GetClaims(userModel);
         var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.SecretKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -30,4 +24,7 @@ public static class AuthService
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+
+   
 }

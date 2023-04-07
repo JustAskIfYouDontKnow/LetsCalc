@@ -8,6 +8,12 @@ public class LetsCalcController : Controller
     [AllowAnonymous]
     public IActionResult Index()
     {
+        return View("~/Views/Login/Index.cshtml");
+    }
+
+    [Authorize]
+    public IActionResult Calculator()
+    {
         return View("~/Views/Addition/Index.cshtml");
     }
 }

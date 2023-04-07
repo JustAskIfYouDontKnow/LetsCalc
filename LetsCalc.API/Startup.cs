@@ -1,5 +1,6 @@
 using LetsCalc.API.Helper;
 using LetsCalc.Database;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.OpenApi.Models;
 
 namespace LetsCalc.API
@@ -32,6 +33,13 @@ namespace LetsCalc.API
             
             services.AddRazorPages();
             services.AddControllers();
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.Cookie.Name = "Auth";
+                    options.LoginPath = "/LetsCalc/Index";
+                });
         }
 
 
